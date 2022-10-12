@@ -1,0 +1,14 @@
+name: coverage
+
+on:
+  push:
+    branches-ignore:
+      - develop
+      - main
+
+jobs:
+  coverage:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ArtiomTr/jest-coverage-report-action@v2
