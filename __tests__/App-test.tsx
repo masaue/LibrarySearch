@@ -14,6 +14,10 @@ it('renders correctly', () => {
   expect(_safeAreaViewColor()).toBe(Colors.lighter);
 });
 
+it('renders correctly with dark', () => {
+  expect(_safeAreaViewColor()).toBe(Colors.darker);
+});
+
 function _safeAreaViewColor() {
   const app = renderer.create(<App />);
   const safeAreaView = app.root.findByType(SafeAreaView);
