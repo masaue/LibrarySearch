@@ -1,4 +1,4 @@
-import {CALIL_API_KEY} from 'src/config';
+import {CALIL_API_KEY} from '@env';
 import {axios} from 'src/lib/axios';
 
 export const getLibrary = () => {
