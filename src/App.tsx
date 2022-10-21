@@ -12,6 +12,8 @@ import React from 'react';
 import {Button, SafeAreaView, StatusBar, useColorScheme} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
+import {getLibrary} from 'src/features/calil/api/library';
+
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -25,7 +27,14 @@ const App = () => {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <Button color={Colors.blue} title="call calil library" />
+      <Button
+        color={Colors.blue}
+        onPress={async () => {
+          const library = await getLibrary();
+          console.log(library);
+        }}
+        title="call calil library"
+      />
     </SafeAreaView>
   );
 };
