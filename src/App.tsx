@@ -12,7 +12,7 @@ import React from 'react';
 import {Button, SafeAreaView, StatusBar, useColorScheme} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-import {getLibrary} from 'src/features/calil/api/library';
+import {getLibraries} from 'src/features/calil/api/getLibraries';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -30,8 +30,8 @@ const App = () => {
       <Button
         color={Colors.blue}
         onPress={async () => {
-          const library = await getLibrary();
-          console.log(library);
+          const libraries = await getLibraries();
+          console.log(libraries);
         }}
         title="call calil library"
       />
