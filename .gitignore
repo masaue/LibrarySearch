@@ -66,3 +66,6 @@ buck-out/
 # jest
 #
 coverage/
+
+# dotenv
+.env
