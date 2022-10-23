@@ -11,7 +11,7 @@ export const getLibraries = (pref: string): Promise<Library[]> => {
       app_key: CALIL_API_KEY,
       callback: '',
       format: 'json',
-      limit: 2,
+      limit: 10,
       pref,
     },
   });
