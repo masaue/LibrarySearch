@@ -1,7 +1,7 @@
 import {useQuery} from 'react-query';
 
 import {CALIL_API_KEY} from '@env';
-import {Library} from 'src/features/calil/types/library';
+import {Library} from 'src/features/calil/types';
 import {axios} from 'src/lib/axios';
 import {ExtractFnReturnType, QueryConfig} from 'src/lib/react-query';
 
