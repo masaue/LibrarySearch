@@ -2,10 +2,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 
-/*
-import BlockScreen from './screens/BlockScreen';
-import WebScreen from './screens/WebScreen';
- */
 import {Library} from 'src/features/calil/types';
 import {LibrariesScreen} from 'src/screens/LibrariesScreen';
 import {LibraryDetailsScreen} from 'src/screens/LibraryDetailsScreen';
