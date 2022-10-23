@@ -16,9 +16,12 @@ import {
   TextInput,
   useColorScheme,
 } from 'react-native';
+import {QueryClientProvider} from 'react-query';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import {getLibraries} from 'src/features/calil/api/getLibraries';
+import {LibraryList} from 'src/features/calil/components/LibrarryList';
+import {queryClient} from 'src/lib/react-query';
 
 const App = () => {
   const [prefecture, setPrefecture] = React.useState('');
@@ -30,26 +33,27 @@ const App = () => {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <TextInput
-        onChangeText={setPrefecture}
-        value={prefecture}
-        placeholder="都道府県"
-      />
-      <Button
-        color={Colors.blue}
-        onPress={async () => {
-          const libraries = await getLibraries(prefecture);
-          console.log(libraries);
-          console.log(prefecture);
-        }}
-        title="call calil library"
-      />
-    </SafeAreaView>
+    <QueryClientProvider client={queryClient}>
+      <SafeAreaView style={backgroundStyle}>
+        <StatusBar
+          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+          backgroundColor={backgroundStyle.backgroundColor}
+        />
+        <TextInput
+          onChangeText={setPrefecture}
+          value={prefecture}
+          placeholder="都道府県"
+        />
+        <Button
+          color={Colors.blue}
+          onPress={async () => {
+            await getLibraries(prefecture);
+          }}
+          title="call calil library"
+        />
+        <LibraryList prefecture={prefecture} />
+      </SafeAreaView>
+    </QueryClientProvider>
   );
 };
 
