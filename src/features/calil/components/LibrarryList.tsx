@@ -44,7 +44,7 @@ export const LibraryList = ({navigation, prefecture}: LibraryListProps) => {
         item={item}
         onPress={() => {
           setSelectedLibId(item.libid);
-          navigation.navigate('LibraryDetails');
+          navigation.navigate('LibraryDetails', {library: item});
         }}
         backgroundColor={{backgroundColor}}
         textColor={{color}}

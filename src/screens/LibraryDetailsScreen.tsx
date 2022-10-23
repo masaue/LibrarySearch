@@ -1,10 +1,24 @@
+import {RouteProp} from '@react-navigation/native';
 import React from 'react';
 import {Text} from 'react-native';
 
-export const LibraryDetailsScreen = () => {
+import {RootStackParamList} from 'src/Navigator';
+
+type LibraryDetailsScreenRouteProp = RouteProp<
+  RootStackParamList,
+  'LibraryDetails'
+>;
+
+type Props = {
+  route: LibraryDetailsScreenRouteProp;
+};
+
+export const LibraryDetailsScreen = ({route}: Props) => {
+  const {library} = route.params;
   return (
     <>
-      <Text>welcome to LibraryDetailsScreen!</Text>
+      <Text>{library.formal}</Text>
+      <Text>{library.address}</Text>
     </>
   );
 };
