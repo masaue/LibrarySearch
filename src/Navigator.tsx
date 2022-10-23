@@ -7,6 +7,7 @@ import BlockScreen from './screens/BlockScreen';
 import WebScreen from './screens/WebScreen';
  */
 import {LibrariesScreen} from 'src/screens/LibrariesScreen';
+import {LibraryDetailsScreen} from 'src/screens/LibraryDetailsScreen';
 
 export type Bounds = {
   origin: {x: number; y: number};
@@ -28,6 +29,10 @@ export default class Navigator extends React.Component {
             initialRouteName="Libraries"
             screenOptions={{headerShown: false}}>
             <Stack.Screen component={LibrariesScreen} name="Libraries" />
+            <Stack.Screen
+              component={LibraryDetailsScreen}
+              name="LibraryDetails"
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </>
