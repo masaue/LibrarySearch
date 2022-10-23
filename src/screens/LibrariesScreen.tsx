@@ -6,6 +6,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {RootStackParamList} from 'src/Navigator';
 import {getLibraries} from 'src/features/calil/api/getLibraries';
 import {LibraryList} from 'src/features/calil/components/LibrarryList';
+import {Library} from 'src/features/calil/types';
 
 export type LibrariesScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -17,6 +18,7 @@ type Props = {
 };
 
 export const LibrariesScreen = ({navigation}: Props) => {
+  const [libraries, setLibraries] = React.useState<Library[]>([]);
   const [prefecture, setPrefecture] = React.useState('');
 
   return (
@@ -29,11 +31,11 @@ export const LibrariesScreen = ({navigation}: Props) => {
       <Button
         color={Colors.blue}
         onPress={async () => {
-          await getLibraries(prefecture);
+          setLibraries(await getLibraries(prefecture));
         }}
         title="call calil library"
       />
-      <LibraryList navigation={navigation} prefecture={prefecture} />
+      <LibraryList navigation={navigation} libraries={libraries} />
     </>
   );
 };
