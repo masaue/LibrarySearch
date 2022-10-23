@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Text, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
 
 import {useLibraries} from 'src/features/calil/api/getLibraries';
-import {Library} from 'src/features/calil/types/library';
+import {Library} from 'src/features/calil/types';
 
 type ItemProps = {
   item: Library;
