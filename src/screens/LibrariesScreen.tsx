@@ -1,11 +1,22 @@
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
 import {Button, TextInput} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
+import {RootStackParamList} from 'src/Navigator';
 import {getLibraries} from 'src/features/calil/api/getLibraries';
 import {LibraryList} from 'src/features/calil/components/LibrarryList';
 
-export const LibrariesScreen = () => {
+export type LibrariesScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'Libraries'
+>;
+
+type Props = {
+  navigation: LibrariesScreenNavigationProp;
+};
+
+export const LibrariesScreen = ({navigation}: Props) => {
   const [prefecture, setPrefecture] = React.useState('');
 
   return (
@@ -22,7 +33,7 @@ export const LibrariesScreen = () => {
         }}
         title="call calil library"
       />
-      <LibraryList prefecture={prefecture} />
+      <LibraryList navigation={navigation} prefecture={prefecture} />
     </>
   );
 };

@@ -3,6 +3,7 @@ import {Text, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
 
 import {useLibraries} from 'src/features/calil/api/getLibraries';
 import {Library} from 'src/features/calil/types';
+import {LibrariesScreenNavigationProp} from 'src/screens/LibrariesScreen';
 
 type ItemProps = {
   item: Library;
@@ -18,10 +19,11 @@ const Item = ({item, onPress, backgroundColor, textColor}: ItemProps) => (
 );
 
 type LibraryListProps = {
+  navigation: LibrariesScreenNavigationProp;
   prefecture: string;
 };
 
-export const LibraryList = ({prefecture}: LibraryListProps) => {
+export const LibraryList = ({navigation, prefecture}: LibraryListProps) => {
   const [selectedLibId, setSelectedLibId] = useState('');
   const librariesQuery = useLibraries({prefecture});
 
@@ -40,7 +42,10 @@ export const LibraryList = ({prefecture}: LibraryListProps) => {
     return (
       <Item
         item={item}
-        onPress={() => setSelectedLibId(item.libid)}
+        onPress={() => {
+          setSelectedLibId(item.libid);
+          navigation.navigate('LibraryDetails');
+        }}
         backgroundColor={{backgroundColor}}
         textColor={{color}}
       />

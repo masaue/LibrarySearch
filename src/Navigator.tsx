@@ -16,6 +16,7 @@ export type Bounds = {
 
 export type RootStackParamList = {
   Libraries: undefined;
+  LibraryDetails: undefined;
 };
 
 export default class Navigator extends React.Component {
